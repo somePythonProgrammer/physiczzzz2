@@ -4,13 +4,13 @@ const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 const Render = Matter.Render;
-var dustbinObj, paperObject,groundObject	
+var dustbinObj, paperObject,groundObject,thrown;	
 var world;
 
 function setup() {
 	createCanvas(1500, 800);
 	rectMode(CENTER);
-
+        thrown=0
 	engine = Engine.create();
 	world = engine.world;
 	dustbinObj=new dustbin(1200,560);
@@ -43,8 +43,9 @@ function draw() {
 }
 
 function keyPressed() {
-  	if (keyCode === UP_ARROW) {
+  	if (keyCode === UP_ARROW&&throwwn===0) {
     	Matter.Body.applyForce(paperObject.body,paperObject.body.position,{x:69,y:-120});
+		thrown=1
   	}
 }
 
